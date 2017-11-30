@@ -218,13 +218,14 @@ public class BannerSlider extends FrameLayout implements ViewPager.OnPageChangeL
 
     @Override
     public void onPageSelected(int position) {
-        try {
             if (mustLoopSlides) {
                 if (position == 0) {
                     postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            viewPager.setCurrentItem(banners.size(), false);
+                            try {
+                                viewPager.setCurrentItem(banners.size(), false);
+                            } catch (Exception e) {}
                         }
                     }, 400);
                     if (slideIndicatorsGroup != null) {
@@ -234,7 +235,9 @@ public class BannerSlider extends FrameLayout implements ViewPager.OnPageChangeL
                     postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            viewPager.setCurrentItem(1, false);
+                            try {
+                                viewPager.setCurrentItem(1, false);
+                            } catch (Exception e) {}
                         }
                     }, 400);
                     if (slideIndicatorsGroup != null) {
@@ -248,7 +251,6 @@ public class BannerSlider extends FrameLayout implements ViewPager.OnPageChangeL
             } else {
                 slideIndicatorsGroup.onSlideChange(position);
             }
-        } catch (Exception e) {}
     }
 
     @Override
@@ -325,7 +327,9 @@ public class BannerSlider extends FrameLayout implements ViewPager.OnPageChangeL
                             postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
-                                    viewPager.setCurrentItem(banners.size(), false);
+                                    try {
+                                        viewPager.setCurrentItem(banners.size(), false);
+                                    } catch (Exception e) {}
                                 }
                             }, 400);
                             if (slideIndicatorsGroup != null) {
@@ -335,7 +339,9 @@ public class BannerSlider extends FrameLayout implements ViewPager.OnPageChangeL
                             postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
-                                    viewPager.setCurrentItem(1, false);
+                                    try {
+                                        viewPager.setCurrentItem(1, false);
+                                    } catch (Exception e) {}
                                 }
                             }, 400);
                             if (slideIndicatorsGroup != null) {
@@ -364,7 +370,9 @@ public class BannerSlider extends FrameLayout implements ViewPager.OnPageChangeL
                 postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        viewPager.setCurrentItem(banners.size(), false);
+                        try {
+                            viewPager.setCurrentItem(banners.size(), false);
+                        } catch (Exception e) {}
                     }
                 }, 400);
                 if (slideIndicatorsGroup != null) {
@@ -374,7 +382,9 @@ public class BannerSlider extends FrameLayout implements ViewPager.OnPageChangeL
                 postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        viewPager.setCurrentItem(1, false);
+                        try {
+                            viewPager.setCurrentItem(1, false);
+                        } catch (Exception e) {}
                     }
                 }, 400);
                 if (slideIndicatorsGroup != null) {
