@@ -218,35 +218,37 @@ public class BannerSlider extends FrameLayout implements ViewPager.OnPageChangeL
 
     @Override
     public void onPageSelected(int position) {
-        if (mustLoopSlides) {
-            if (position == 0) {
-                postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        viewPager.setCurrentItem(banners.size(), false);
+        try {
+            if (mustLoopSlides) {
+                if (position == 0) {
+                    postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            viewPager.setCurrentItem(banners.size(), false);
+                        }
+                    }, 400);
+                    if (slideIndicatorsGroup != null) {
+                        slideIndicatorsGroup.onSlideChange(banners.size() - 1);
                     }
-                }, 400);
-                if (slideIndicatorsGroup != null) {
-                    slideIndicatorsGroup.onSlideChange(banners.size() - 1);
-                }
-            } else if (position == banners.size() + 1) {
-                postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        viewPager.setCurrentItem(1, false);
+                } else if (position == banners.size() + 1) {
+                    postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            viewPager.setCurrentItem(1, false);
+                        }
+                    }, 400);
+                    if (slideIndicatorsGroup != null) {
+                        slideIndicatorsGroup.onSlideChange(0);
                     }
-                }, 400);
-                if (slideIndicatorsGroup != null) {
-                    slideIndicatorsGroup.onSlideChange(0);
+                } else {
+                    if (slideIndicatorsGroup != null) {
+                        slideIndicatorsGroup.onSlideChange(position - 1);
+                    }
                 }
             } else {
-                if (slideIndicatorsGroup != null) {
-                    slideIndicatorsGroup.onSlideChange(position - 1);
-                }
+                slideIndicatorsGroup.onSlideChange(position);
             }
-        } else {
-            slideIndicatorsGroup.onSlideChange(position);
-        }
+        } catch (Exception e) {}
     }
 
     @Override
